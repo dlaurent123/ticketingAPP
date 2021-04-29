@@ -14,4 +14,18 @@ spec:
     spec: 
       containers:
         - name: auth
-          image: arealcodeworld/auth       
+          image: arealcodeworld/auth 
+---
+apiVersion: v1 
+kind: Service
+metadata:
+  name: auth-service
+spec: 
+  selector: 
+    app: auth
+  ports:
+    - name: auth
+      protocol: TCP
+      port: 3000 
+      targetPort: 3000          
+
