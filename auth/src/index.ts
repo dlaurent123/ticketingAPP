@@ -5,6 +5,15 @@ const PORT = 3000
 const app = express()
 app.use(json())
 
+app.get("/api/users", (req,res) =>{
+  try {
+    res.send("IT WORKS!")
+  } catch (error) {
+      res.send(error)
+  }
+    
+})
+
 app.listen(PORT,()=>{
-    console.log(`SERVER IS RUNNING ON PORT ${PORT}`)
+    console.log(`SERVER IS RUNNING ON PORT ${PORT}!`)
 })

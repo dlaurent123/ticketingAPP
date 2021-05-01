@@ -1,0 +1,18 @@
+apiVersion: skaffold/v2alpha3
+kind: Config
+deploy:
+  kubectl:
+    manifests:
+      - ./infrastructure/k8s/*
+build:
+  local:
+    push: false 
+  artifacts:
+    - image: arealcodeworld/auth
+      context: auth 
+      docker: 
+        dockerfile: dockerfile
+      sync:
+        manual: 
+          - src: "src/**/*.ts"  
+            dest: .        
