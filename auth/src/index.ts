@@ -9,7 +9,7 @@ app.get("/api/users", (req,res) =>{
   try {
     res.send("IT WORKS!")
   } catch (error) {
-      res.send(error)
+      res.send("no")
   }
     
 })
