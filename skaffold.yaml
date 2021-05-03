@@ -5,8 +5,8 @@ deploy:
     manifests:
       - ./infrastructure/k8s/*
 build:
-  local:
-    push: false
+  # local:
+  #   push: false
   googleCloudBuild:
     projectId: ticketing-dev-312523   
   artifacts:
