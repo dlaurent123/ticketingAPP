@@ -13,7 +13,7 @@ build:
     - image: us.gcr.io/ticketing-dev-312523/auth
       context: auth 
       docker: 
-        dockerfile: dockerfile
+        dockerfile: Dockerfile
       sync:
         manual: 
           - src: "src/**/*.ts"  

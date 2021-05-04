@@ -3,7 +3,7 @@ import express from "express"
 const router = express.Router()
 
 
-router.get("/api/users/currentUser",(req,res) =>{
+router.get("/",(req,res) =>{
     try {
         res.send("IT WORKS!")
       } catch (error) {

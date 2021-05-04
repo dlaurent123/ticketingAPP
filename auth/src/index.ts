@@ -9,10 +9,10 @@ const PORT = 3000
 const app = express()
 app.use(json())
 
-app.use(currentUserRouter)
+app.use("/api/users/currentuser",currentUserRouter)
 app.use(signinRouter)
 app.use(signoutRouter)
-app.use(signupRouter)
+app.use("/api/users/signup",signupRouter)
 
 
 app.listen(PORT,()=>{
