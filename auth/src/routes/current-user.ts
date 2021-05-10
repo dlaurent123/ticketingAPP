@@ -1,15 +1,13 @@
-import express from "express"
+import express from "express";
 
-const router = express.Router()
+const router = express.Router();
 
+router.get("/api/users/currentuser", (req, res) => {
+  try {
+    res.send("IT WORKS!");
+  } catch (error) {
+    res.send("no");
+  }
+});
 
-router.get("/",(req,res) =>{
-    try {
-        res.send("IT WORKS!")
-      } catch (error) {
-          res.send("no")
-      }
-})
-
-
-export {router as currentUserRouter}
+export { router as currentUserRouter };
