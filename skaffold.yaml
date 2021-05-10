@@ -8,13 +8,13 @@ build:
   # local:
   #   push: false
   googleCloudBuild:
-    projectId: ticketing-dev-312523   
+    projectId: ticketing-dev-312523
   artifacts:
     - image: us.gcr.io/ticketing-dev-312523/auth
-      context: auth 
-      docker: 
+      context: auth
+      docker:
         dockerfile: Dockerfile
       sync:
-        manual: 
-          - src: "src/**/*.ts"  
-            dest: .        
+        manual:
+          - src: "src/**/*.ts"
+            dest: .
