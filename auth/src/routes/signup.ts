@@ -1,7 +1,8 @@
-import express, { NextFunction, Request, Response } from "express";
+import express, { Request, Response } from "express";
+import { User } from "../models/users";
 import { body, validationResult } from "express-validator";
 import { RequestValidationError } from "../errors/request-validation-error";
-import { DatabaseConnectionError } from "../errors/database-connection-error";
+import { BadRequestError } from "../errors/bad-request-error";
 
 const router = express.Router();
 
@@ -15,7 +16,7 @@ router.post(
       .isLength({ min: 4, max: 20 })
       .withMessage("Password must be between 4 and 20 characters"),
   ],
-  (req: Request, res: Response) => {
+  async (req: Request, res: Response) => {
     const errors = validationResult(req);
 
     const { email, password } = req.body;
@@ -24,8 +25,16 @@ router.post(
       throw new RequestValidationError(errors.array());
     }
 
-    throw new DatabaseConnectionError();
-    res.send({});
+    const existingUser = await User.findOne({ email });
+
+    if (existingUser) {
+      throw new BadRequestError("Email already exists");
+    }
+
+    const user = User.build({ email, password });
+    await user.save();
+
+    res.status(201).send(user);
   }
 );
 
