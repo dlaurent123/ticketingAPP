@@ -36,13 +36,17 @@ app.all("*", async () => {
 app.use(errorHandler);
 
 const start = async () => {
+  if (!process.env.JWT_KEY) {
+    throw new Error("JWT_KEY must be defined");
+  }
+
   try {
     await mongoose.connect("mongodb://auth-mongo-srv:27017/auth", {
       useNewUrlParser: true,
       useUnifiedTopology: true,
       useCreateIndex: true,
     });
-    console.log("connected to mongo ddb");
+    console.log("connected to mongo db");
   } catch (error) {
     console.error(error);
   }
