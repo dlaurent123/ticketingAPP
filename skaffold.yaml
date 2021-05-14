@@ -11,10 +11,14 @@ build:
     projectId: ticketing-dev-312523
   artifacts:
     - image: us.gcr.io/ticketing-dev-312523/auth
+      buildpacks:
+        builder: gcr.io/buildpacks/builder:v1
       context: auth
-      docker:
-        dockerfile: Dockerfile
-      sync:
-        manual:
-          - src: "src/**/*.ts"
-            dest: .
+      # docker:
+      #   dockerfile: Dockerfile
+      # sync:
+      #   auto: true
+
+      # manual:
+      #   - src: "src/**/*.ts"
+      #     dest: .
