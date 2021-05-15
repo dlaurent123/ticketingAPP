@@ -1,5 +1,5 @@
 const Bannana = () => {
-  return <hi>Bannana</hi>;
+  return <h1>Bannana</h1>;
 };
 
 export default Bannana;
