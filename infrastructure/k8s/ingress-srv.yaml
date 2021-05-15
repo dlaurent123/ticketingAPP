@@ -8,10 +8,13 @@ metadata:
 spec:
   rules:
     - host: tickets.dev
-      http: 
+      http:
         paths:
           - path: /api/users/?(.*)
             backend:
-              serviceName: auth-service 
-              servicePort: 3000   
-              
+              serviceName: auth-service
+              servicePort: 3000
+          - path: /?(.*)
+            backend:
+              serviceName: client-srv
+              servicePort: 3000
