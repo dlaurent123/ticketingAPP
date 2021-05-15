@@ -1,17 +1,24 @@
 import { useState } from "react";
+import useRequest from "../../hooks/use-request";
 
-export default () => {
+const Signup = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const { doRequest, errors } = useRequest({
+    url: "/api/users/signup",
+    method: "post",
+    body: { email, password },
+  });
 
-  const onSubmit = (e) => {
+  const onSubmit = async (e) => {
     e.preventDefault();
-    console.log(email, password);
+
+    doRequest();
   };
 
   return (
     <form onSubmit={onSubmit}>
-      <hi>signup</hi>
+      <h1>signup</h1>
       <div className="form-group">
         <label>Email Address</label>
         <input
@@ -29,7 +36,10 @@ export default () => {
           className="form-control"
         />
       </div>
+      {errors}
       <button className="btn btn-primary">Sign Up</button>
     </form>
   );
 };
+
+export default Signup;
